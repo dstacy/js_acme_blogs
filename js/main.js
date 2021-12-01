@@ -109,7 +109,7 @@ const populateSelectMenu= (posts) => {
 const getUsers = async () => {
     try {
         const users = await fetch("https://jsonplaceholder.typicode.com/users");  
-        if(!users.ok) throw new Error();  
+        if(!users.ok) throw new Error("Status code not in 200-299 range");  
         return await users.json();
     } 
     catch(err) {
@@ -122,7 +122,7 @@ const getUserPosts = async (userId) => {
     if(!userId) { return; }
     try {
         const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
-        if(!posts.ok) throw new Error();
+        if(!posts.ok) throw new Error("Status code not in 200-299 range");
         return await posts.json();
     }
     catch(err) {
@@ -135,7 +135,7 @@ const getUser = async (userId) => {
     if(!userId) { return; }
     try {
         const user = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
-        if(!user.ok) throw new Error();
+        if(!user.ok) throw new Error("Status code not in 200-299 range");
         return await user.json();
     }
     catch(err) {
@@ -148,7 +148,7 @@ const getPostComments = async (postId) => {
     if(!postId) { return; }
     try {
         const comments = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
-        if(!comments.ok) throw new Error();
+        if(!comments.ok) throw new Error("Status code not in 200-299 range");
         return await comments.json();
     }
     catch(err) {
@@ -198,7 +198,6 @@ const createPosts = async (posts) => {
 // The element variable is returned.
 const displayPosts = async (posts) => {
     const mainElem = document.querySelector("main");
-    // figure out how to correctly pull the text in
     const text = "Select an Employee to display their posts."
     const element = posts ? await createPosts(posts) : createElemWithText("p", text, "default-text");
     mainElem.append(element);
