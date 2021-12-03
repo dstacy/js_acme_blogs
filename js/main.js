@@ -257,6 +257,6 @@ const initApp = async () => {
 
 // Call the script into action by adding an event listener that listens for the
 // DOM content to load and calls initApp()
-document.addEventListener("DOMContentLoaded", function (e) {initApp()}, false);
+document.addEventListener("DOMContentLoaded", function () {initApp()}, false);
 
 
