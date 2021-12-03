@@ -101,7 +101,7 @@ const populateSelectMenu= (posts) => {
         selectMenu.append(option);
     });   
     return selectMenu;
-};
+}
 
 // Async/Await functions
 
@@ -199,9 +199,9 @@ const createPosts = async (posts) => {
 const displayPosts = async (posts) => {
     const mainElem = document.querySelector("main");
     const text = "Select an Employee to display their posts."
-    const element = posts ? await createPosts(posts) : createElemWithText("p", text, "default-text");
-    mainElem.append(element);
-    return element; 
+    const element = posts?.length ? await createPosts(posts) : createElemWithText("p", text, "default-text");
+    mainElem.append(element); 
+    return element;
 }
 
 // Sets event.target.listener.  Passes a postId to toggleCommentSection and toggleCommentButton and assigns those results to variables
@@ -213,9 +213,9 @@ const toggleComments = (event, postId) => {
     const button = toggleCommentButton(postId);
     const arry = [section, button];
     return arry;
-};
+}
 
-// Calls removeButtonListeners(), deletChildElements(), displayPosts, and addButtonListerns.  Assings
+// Calls removeButtonListeners(), deletChildElements(), displayPosts, and addButtonListerns.  Assigns
 // the results to variables and returns an array that contains the variables created.
 const refreshPosts = async (posts) => {
     if(!posts) { return; }
@@ -252,7 +252,7 @@ const initPage = async () => {
 const initApp = async () => {
     initPage();
     const selectMenu = document.getElementById("selectMenu");
-    selectMenu.addEventListener("change", function (e) {selectMenuChangeEventHandler()}, false);
+    selectMenu.addEventListener("change", function (e) {selectMenuChangeEventHandler(e)}, false);
 }
 
 // Call the script into action by adding an event listener that listens for the
